@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="RVizSplat — real-time 3D Gaussian Splatting natively inside RViz 2." />
+  <meta name="theme-color" content="#ffffff" />
+
+  <meta property="og:title" content="RVizSplat — Real-time 3D Gaussian Splatting in RViz 2" />
+  <meta property="og:description" content="A native RViz 2 Display for streaming and rendering 3D Gaussian Splats over ROS." />
+  <meta property="og:image" content="./assets/images/hero.png" />
+  <meta property="og:type" content="website" />
+
+  <title>RVizSplat — Real-time 3D Gaussian Splatting in RViz 2</title>
+
+  <link rel="icon" type="image/png" href="./assets/images/rviz-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+
+  <!-- ============================ HERO =============================== -->
+  <section class="page-top">
+
+    <div class="venue">ROSCon&nbsp;2026</div>
+
+    <h1 class="paper-title">
+      RVizSplat: Real-time 3D Gaussian Splatting<br/>
+      natively inside RViz&nbsp;2
+    </h1>
+
+    <div class="authors">
+      <span class="author"><a href="#"><!-- TODO -->Author&nbsp;One</a><sup>1</sup></span>
+      <span class="author"><a href="#"><!-- TODO -->Author&nbsp;Two</a><sup>1</sup></span>
+      <span class="author"><a href="#"><!-- TODO -->Author&nbsp;Three</a><sup>2</sup></span>
+    </div>
+    <div class="affil">
+      <span><sup>1</sup>&nbsp;<!-- TODO -->Affiliation&nbsp;A</span>
+      <span><sup>2</sup>&nbsp;<!-- TODO -->Affiliation&nbsp;B</span>
+    </div>
+
+    <div class="links">
+      <a href="https://github.com/suchetanrs/RVizSplat" class="link-btn">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.16c-3.2.7-3.87-1.36-3.87-1.36-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.76 2.69 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39s1.97.13 2.89.39c2.21-1.49 3.18-1.18 3.18-1.18.62 1.58.23 2.75.11 3.04.74.8 1.18 1.82 1.18 3.08 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.07.78 2.16v3.2c0 .31.21.68.8.56C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/></svg>
+        Code
+      </a>
+      <a href="#video" class="link-btn">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Video
+      </a>
+      <a href="#install" class="link-btn">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        Install
+      </a>
+      <a href="#cite" class="link-btn">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        BibTeX
+      </a>
+    </div>
+
+    <figure class="hero-figure">
+      <img src="./assets/images/hero.png" alt="RVizSplat — 3D logo with floating Gaussian splats around a small robot" />
+    </figure>
+
+  </section>
+
+  <!-- ============================ TEASER ============================= -->
+  <section id="video" class="block">
+    <div class="col">
+      <figure class="video-figure">
+        <video
+          autoplay muted loop playsinline preload="metadata"
+          poster="./assets/images/shots/08-garden-viewport.png">
+          <source src="./assets/videos/teaser.mp4" type="video/mp4" />
+        </video>
+        <figcaption>
+          The plugin in action — a 100k bonsai scene, the
+          <a href="https://jonbarron.info/mipnerf360/">Mip-NeRF&nbsp;360</a> garden (5.8M splats) in
+          both Sorted and WBOIT modes, and a mixed scene with TFs and markers — all rendered live in
+          RViz&nbsp;2.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============================ ABSTRACT =========================== -->
+  <section class="block">
+    <div class="col">
+      <h2 class="h2">Abstract</h2>
+      <p class="prose">
+        3D Gaussian Splatting has rapidly become the dominant representation for photorealistic scene
+        reconstruction, but the robotics community has had no first-class way to <em>view</em> these
+        scenes inside its standard tooling. <strong>RVizSplat</strong> is a native RViz&nbsp;2
+        Display plugin that renders millions of 3D Gaussians at interactive framerates, side-by-side
+        with the rest of a robot's scene graph — TFs, markers, point clouds, meshes. Splats can be
+        loaded from a <code>.ply</code> file or streamed over a ROS topic
+        (<code>splat_msgs/SplatArray</code>) so a downstream node can update a live splat scene as
+        easily as a marker array. Transparency is resolved in one of two parallel modes — an exact
+        back-to-front <em>Sorted</em> path with a CUDA-accelerated worker-thread sort, or a
+        four-pass Weighted Blended OIT path that skips the sort entirely.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================ METHOD ============================= -->
+  <section id="how" class="block block-alt">
+    <div class="col-wide">
+      <h2 class="h2">Method</h2>
+      <p class="prose">
+        A trained 3DGS scene reaches RViz either as a <code>.ply</code> file or as a
+        <code>splat_msgs/SplatArray</code> on a ROS topic. The plugin's <code>SplatCloud</code>
+        owns the GPU upload and instanced draw; an EWA + spherical-harmonics shader projects each
+        splat to a screen-space ellipse and emits a 4-vertex quad. Transparency is resolved in one
+        of two parallel modes:
+      </p>
+
+      <figure class="diagram-figure">
+        <svg viewBox="0 0 1100 380" class="pipeline-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="RVizSplat pipeline diagram">
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/></marker>
+            <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0ea372"/></marker>
+            <marker id="arrowIndigo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4f46e5"/></marker>
+          </defs>
+
+          <text x="20" y="50"  class="lane-label">Source</text>
+          <text x="20" y="180" class="lane-label">Plugin core</text>
+          <text x="20" y="310" class="lane-label">Transparency</text>
+
+          <g class="dia-node">
+            <rect x="120" y="20" width="160" height="52" rx="6"/>
+            <text x="200" y="42" class="dia-title">PLY file</text>
+            <text x="200" y="60" class="dia-sub">trained 3DGS scene</text>
+          </g>
+          <g class="dia-node">
+            <rect x="120" y="92" width="160" height="52" rx="6"/>
+            <text x="200" y="114" class="dia-title">/gaussian_splats</text>
+            <text x="200" y="132" class="dia-sub">splat_msgs/SplatArray</text>
+          </g>
+
+          <g class="dia-node dia-core">
+            <rect x="350" y="50" width="180" height="52" rx="6"/>
+            <text x="440" y="72" class="dia-title">SplatCloud</text>
+            <text x="440" y="90" class="dia-sub">Ogre MovableObject</text>
+          </g>
+          <g class="dia-node dia-core">
+            <rect x="580" y="50" width="180" height="52" rx="6"/>
+            <text x="670" y="72" class="dia-title">EWA + SH shader</text>
+            <text x="670" y="90" class="dia-sub">splat.vert / .frag</text>
+          </g>
+
+          <text x="670" y="148" class="dia-branch" text-anchor="middle">choose one mode</text>
+
+          <g class="dia-node dia-sorted">
+            <rect x="290" y="200" width="220" height="60" rx="6"/>
+            <text x="400" y="225" class="dia-title">Sort worker</text>
+            <text x="400" y="243" class="dia-sub">CPU pdqsort / CUDA radix</text>
+          </g>
+          <g class="dia-node dia-sorted-out">
+            <rect x="290" y="280" width="220" height="44" rx="6"/>
+            <text x="400" y="307" class="dia-title-sm">Sorted alpha blend</text>
+          </g>
+          <text x="400" y="350" class="dia-mode dia-mode-sorted">Sorted (default) — exact back-to-front</text>
+
+          <g class="dia-node dia-wboit">
+            <rect x="830" y="200" width="220" height="60" rx="6"/>
+            <text x="940" y="225" class="dia-title">WBOIT compositor</text>
+            <text x="940" y="243" class="dia-sub">accum · reveal · resolve</text>
+          </g>
+          <g class="dia-node dia-wboit-out">
+            <rect x="830" y="280" width="220" height="44" rx="6"/>
+            <text x="940" y="307" class="dia-title-sm">No sort needed</text>
+          </g>
+          <text x="940" y="350" class="dia-mode dia-mode-wboit">WBOIT — order-independent</text>
+
+          <line x1="280" y1="46"  x2="350" y2="68"  stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <line x1="280" y1="118" x2="350" y2="84"  stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <line x1="530" y1="76"  x2="580" y2="76"  stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <line x1="640" y1="102" x2="400" y2="200" stroke="#0ea372" stroke-width="1.5" marker-end="url(#arrowGreen)"/>
+          <line x1="700" y1="102" x2="940" y2="200" stroke="#4f46e5" stroke-width="1.5" marker-end="url(#arrowIndigo)"/>
+          <line x1="400" y1="260" x2="400" y2="280" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <line x1="940" y1="260" x2="940" y2="280" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+        </svg>
+        <figcaption>
+          Figure 1. The RVizSplat pipeline. <span class="cgreen">Sorted</span> and
+          <span class="cindigo">WBOIT</span> are mutually exclusive transparency modes selected
+          from the <code>GsplatDisplay</code> Properties panel; the sort path runs only when
+          <em>Sorted</em> is active.
+        </figcaption>
+      </figure>
+
+      <h3 class="h3">Sorted mode</h3>
+      <p class="prose">
+        A worker thread owns the depth sorter (CPU pdqsort or CUDA CUB radix). The render thread
+        posts a sort request per frame and reads the latest result via a lock-free pickup; no stalls,
+        no per-frame mutex contention, no CUDA context churn. The GPU then draws splats back-to-front
+        with standard pre-multiplied alpha blending.
+      </p>
+
+      <h3 class="h3">WBOIT mode</h3>
+      <p class="prose">
+        Sorting splats globally against opaque RViz primitives is impractical — markers don't carry
+        a sort key. Instead, in WBOIT mode the per-frame sort is skipped entirely and a four-pass
+        Ogre compositor (opaque scene, weighted accumulation, transmittance product, resolve)
+        approximates correct transparency. Splats live in render queue&nbsp;95 (after opaque
+        queue&nbsp;94), so the compositor catches them automatically while the rest of RViz keeps
+        using its native pipeline.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================ RESULTS ============================ -->
+  <section id="results" class="block">
+    <div class="col-wide">
+      <h2 class="h2">Results</h2>
+      <p class="prose">
+        Captured live from the dev workspace running on Ubuntu&nbsp;24.04, ROS&nbsp;2 Rolling and the
+        plugin's CPU-sort path (CUDA support disabled in this build).
+      </p>
+
+      <figure class="result-figure">
+        <img src="./assets/images/shots/08-garden-viewport.png" alt="Mip-NeRF 360 garden scene rendered in RViz, Sorted mode" />
+        <figcaption>
+          Figure 2. The Mip-NeRF&nbsp;360 garden (5,834,784 splats) rendered live in RViz&nbsp;2 in
+          <em>Sorted</em> mode.
+        </figcaption>
+      </figure>
+
+      <figure class="result-figure">
+        <img src="./assets/images/shots/10-garden-wboit-viewport.png" alt="Same garden scene, different angle, in WBOIT mode" />
+        <figcaption>
+          Figure 3. The same 5.8M-splat garden in <em>WBOIT</em> mode. With the per-frame sort
+          skipped, the framerate roughly doubles on the CPU-only build.
+        </figcaption>
+      </figure>
+
+      <figure class="result-figure">
+        <img src="./assets/images/shots/01-bonsai-hero.png" alt="Bonsai 3DGS scene rendered in RViz with the GsplatDisplay properties panel" />
+        <figcaption>
+          Figure 4. A 100k-splat bonsai scene with the <code>GsplatDisplay</code> property tree on
+          the left exposing source, SH degree, sort backend, clip box and transparency mode.
+        </figcaption>
+      </figure>
+
+      <figure class="result-figure">
+        <img src="./assets/images/shots/03-bonsai-markers.png" alt="Splats rendered alongside RViz markers, axes, and line lists" />
+        <figcaption>
+          Figure 5. Splats coexisting with native RViz primitives — Axes, Grid, Markers and line
+          lists. The splat sits in render queue&nbsp;95; opaque RViz primitives keep their normal
+          pipeline.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============================ PERFORMANCE ======================== -->
+  <section id="perf" class="block block-alt">
+    <div class="col-wide">
+      <h2 class="h2">Live performance</h2>
+      <p class="prose">
+        Numbers captured from the plugin's own per-frame logger during interactive use. Hardware:
+        AMD&nbsp;Ryzen&nbsp;9&nbsp;8940HX + NVIDIA&nbsp;RTX&nbsp;5050 Laptop, viewport 1920&nbsp;×&nbsp;1140.
+        This build was compiled <em>without</em> CUDA support, so the Sorted path falls back to CPU
+        pdqsort — making it the bottleneck on the larger scene. CUDA-enabled numbers will land
+        alongside the talk.
+      </p>
+
+      <figure class="quality-figure">
+        <table class="quality-table">
+          <thead>
+            <tr>
+              <th>Scene</th>
+              <th>#&nbsp;Splats</th>
+              <th>Mode</th>
+              <th>Sort time</th>
+              <th>Render time</th>
+              <th>FPS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Bonsai</td>
+              <td class="num real">100,000</td>
+              <td>Sorted (CPU)</td>
+              <td class="num real">&lt; 0.1&nbsp;ms</td>
+              <td class="num real">0.002–0.007&nbsp;ms</td>
+              <td class="num real">~990</td>
+            </tr>
+            <tr>
+              <td>Garden</td>
+              <td class="num real">5,834,784</td>
+              <td>Sorted (CPU)</td>
+              <td class="num real">640–2,589&nbsp;ms</td>
+              <td class="num real">0.004–0.037&nbsp;ms</td>
+              <td class="num real">13–15</td>
+            </tr>
+            <tr>
+              <td>Garden</td>
+              <td class="num real">5,834,784</td>
+              <td>WBOIT</td>
+              <td class="num real">— <span class="muted">(skipped)</span></td>
+              <td class="num real">0.002–0.076&nbsp;ms</td>
+              <td class="num real">21–27</td>
+            </tr>
+          </tbody>
+        </table>
+        <figcaption>
+          Table 1. Live readings from the plugin's logger. Render time stays in the microseconds at
+          all sizes — the framerate is dominated entirely by the depth sort, which CUDA radix sort
+          eliminates.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===================== IMAGE QUALITY (PSNR/SSIM/LPIPS) =========== -->
+  <section id="quality" class="block">
+    <div class="col-wide">
+      <h2 class="h2">Image quality</h2>
+      <p class="prose">
+        Standard novel-view-synthesis metrics measured against held-out reference views from the
+        training set. Higher PSNR &amp; SSIM is better; lower LPIPS is better.
+      </p>
+
+      <figure class="quality-figure">
+        <table class="quality-table">
+          <thead>
+            <tr>
+              <th>Scene</th>
+              <th>SH&nbsp;degree</th>
+              <th>Mode</th>
+              <th>PSNR&nbsp;↑</th>
+              <th>SSIM&nbsp;↑</th>
+              <th>LPIPS&nbsp;↓</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Bonsai</td><td>3</td><td>Sorted</td><td class="num pending">—</td><td class="num pending">—</td><td class="num pending">—</td></tr>
+            <tr><td>Bonsai</td><td>3</td><td>WBOIT</td><td class="num pending">—</td><td class="num pending">—</td><td class="num pending">—</td></tr>
+            <tr><td>Garden</td><td>3</td><td>Sorted</td><td class="num pending">—</td><td class="num pending">—</td><td class="num pending">—</td></tr>
+            <tr><td>Garden</td><td>3</td><td>WBOIT</td><td class="num pending">—</td><td class="num pending">—</td><td class="num pending">—</td></tr>
+          </tbody>
+        </table>
+        <figcaption>
+          Table 2. Image-quality metrics. Numbers will be filled in once the evaluation pipeline
+          lands; we render <em>n</em> held-out camera poses with RVizSplat, compare each rendered
+          image to its ground-truth photograph, and report the mean.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============================ ROADMAP ============================ -->
+  <section id="roadmap" class="block block-alt">
+    <div class="col">
+      <h2 class="h2">What's next</h2>
+      <ul class="prose-list">
+        <li><strong>CUDA radix-sort path enabled by default.</strong> Eliminates the sort bottleneck visible at 5.8M splats — the only thing keeping that scene below 60&nbsp;FPS in Sorted mode.</li>
+        <li><strong>Per-splat SH direction.</strong> Switch view-dependent colour from camera-forward to per-splat direction so SH&nbsp;1–3 actually contribute.</li>
+        <li><strong>NDC clamp on projected eigen-axes.</strong> Avoid framerate cliffs from splats projecting to enormous quads near the camera.</li>
+        <li><strong>32-bit per-instance index VBO.</strong> Past the 16,777,216-splat ceiling.</li>
+        <li><strong>Sub-pixel filter</strong> for splats around 1&nbsp;px radius.</li>
+        <li><strong>Compact splat encoding:</strong> scale + quaternion (12&nbsp;B → 6&nbsp;B) and quantised SH (~3× smaller GPU footprint).</li>
+        <li><strong>GL/CUDA interop</strong> on the index VBO — skips two PCIe trips per frame.</li>
+        <li><strong>MBOIT path</strong> for higher-fidelity transparency.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================ INSTALL ============================ -->
+  <section id="install" class="block">
+    <div class="col">
+      <h2 class="h2">Install</h2>
+      <pre class="code-block"><code>git clone --recurse-submodules https://github.com/suchetanrs/RVizSplat
+cd RVizSplat
+chmod +x setup_permissions.sh &amp;&amp; ./setup_permissions.sh
+docker compose build
+docker compose run --rm rviz-dev
+
+# inside the container
+source /opt/ros/rolling/setup.bash
+cd ~/videh_ws &amp;&amp; colcon build --symlink-install
+source install/setup.bash
+
+# stream a scene
+ros2 run splat_publisher ply_splat_publisher \
+  --ros-args -p ply_path:=/path/to/scene.ply
+rviz2  # Add → Gaussian Splats → topic = /gaussian_splats</code></pre>
+    </div>
+  </section>
+
+  <!-- ============================ CITE =============================== -->
+  <section id="cite" class="block block-alt">
+    <div class="col">
+      <h2 class="h2">Cite</h2>
+      <p class="prose">If RVizSplat helps your robot, please cite the ROSCon talk:</p>
+      <div class="bibtex-wrap">
+        <button class="copy-btn" data-copy="bib">Copy</button>
+        <pre id="bib"><code>@inproceedings{rvizsplat2026,
+  title     = {RVizSplat: Real-time 3D Gaussian Splatting in RViz~2},
+  author    = {<!-- TODO: authors -->Author One and Author Two and Author Three},
+  booktitle = {ROSCon},
+  year      = {2026},
+  url       = {https://&lt;your-org&gt;.github.io/rvizsplat-website}
+}</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="col">
+      <span>RVizSplat · ROSCon&nbsp;2026 · <a href="https://github.com/suchetanrs/RVizSplat">code</a></span>
+    </div>
+  </footer>
+
+  <script src="./script.js" defer></script>
+</body>
+</html>
