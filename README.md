@@ -1,8 +1,10 @@
 # RVizSplat — project page
 
-The ROSCon project page for **RVizSplat**: real-time 3D Gaussian Splatting in RViz 2.
+The ROSCon&nbsp;2026 project page for **RVizSplat**: real-time 3D Gaussian Splatting in RViz&nbsp;2.
 
-Pure static site — no build step.
+Plugin repo: https://github.com/RVizSplat/RVizSplat
+
+Contributors: Videh Patel, Suchetan Saravanan, Akash Chikhalikar, Aditya Mathur
 
 ## Local preview
 
@@ -11,46 +13,22 @@ python3 -m http.server 8080
 # open http://localhost:8080
 ```
 
-## Deploy to GitHub Pages
+## Deploy
 
-1. Create an empty GitHub repo (e.g. `rvizsplat-website`).
-2. From this folder:
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial site"
-   git branch -M main
-   git remote add origin git@github.com:<your-org>/rvizsplat-website.git
-   git push -u origin main
-   ```
-3. In the repo settings → **Pages** → set *Source* to `main` and *Folder* to `/ (root)`.
-4. The site will appear at `https://<your-org>.github.io/rvizsplat-website/`.
+The site is currently published from `main` at the repo root via GitHub Pages.
+Push and Pages rebuilds automatically:
 
-To use a custom domain or the org's root site (`<your-org>.github.io`), follow GitHub's standard Pages docs.
-
-## Drop in your videos
-
-Place MP4 files at these paths and they auto-load:
-
-```
-assets/videos/teaser.mp4          # main hero teaser
-assets/videos/result-bonsai.mp4   # results grid, slot 1
-assets/videos/result-garden.mp4   # results grid, slot 2
-assets/videos/result-live.mp4     # results grid, slot 3
-assets/videos/result-markers.mp4  # results grid, slot 4
+```bash
+git add -A && git commit -m "..."
+git push
 ```
 
-If a video file is absent the slot shows a styled placeholder; no broken UI.
+## Drop in your videos / screenshots
 
-## What to fill in
-
-Open `index.html` and search for `TODO:` — there are five spots:
-
-- ROSCon year (currently `2026`)
-- Three author names + their two affiliations
-- BibTeX author list
-
-Anything else (titles, abstract, install commands, perf table) is wired to the actual repo and only needs to change if you reshape the project.
+| Path | Used as |
+|---|---|
+| `assets/videos/teaser.mp4` | Demo video on the page |
+| `assets/images/shots/*.png` | Reserved for figures (currently unused inline; see `index.html`) |
 
 ## Files
 
@@ -58,8 +36,7 @@ Anything else (titles, abstract, install commands, perf table) is wired to the a
 |---|---|
 | `index.html` | The whole page, single file |
 | `style.css` | All styling |
-| `script.js` | Copy-to-clipboard, video placeholder fallback, smooth scroll |
-| `assets/images/hero.png` | Hero banner image |
-| `assets/images/rviz-icon.png` | RViz Display icon — favicon, nav, footer |
-| `assets/videos/` | Drop MP4s here |
-| `.nojekyll` | Stops Pages from running Jekyll (keeps underscored paths working) |
+| `script.js` | Copy-to-clipboard, video fallback, smooth scroll |
+| `assets/images/hero.png` | Hero illustration |
+| `assets/images/rviz-icon.png` | Favicon, nav, footer |
+| `assets/videos/teaser.mp4` | Live screen-capture of the plugin |
