@@ -383,16 +383,16 @@
           </thead>
           <tbody>
             <tr class="row-group">
-              <td>Discrete GPU<br/><span class="row-sub">+ CUDA Toolkit</span></td>
-              <td><strong>Large</strong><br/><span class="row-sub">≥ 3M splats</span></td>
+              <td>Discrete GPU</td>
+              <td><strong>Large</strong><br/><span class="row-sub">&gt; 7–8M splats</span></td>
               <td><span class="reco reco-cuda">Sorted + CUDA radix</span></td>
-              <td class="row-why">CPU sort becomes the bottleneck past a few million splats; the GPU radix sort eliminates it entirely.</td>
+              <td class="row-why">Beyond roughly 7–8M splats CPU pdqsort starts to lag; the GPU radix sort takes over and eliminates the bottleneck.</td>
             </tr>
             <tr>
               <td>Discrete GPU</td>
-              <td>Small / medium<br/><span class="row-sub">≤ 3M splats</span></td>
+              <td>Small / medium<br/><span class="row-sub">≲ 6M splats</span></td>
               <td><span class="reco reco-sorted">Sorted + CPU pdqsort</span></td>
-              <td class="row-why">Default works fine; CUDA setup overhead isn't worth it at this size.</td>
+              <td class="row-why">pdqsort holds up well into several-million-splat territory in our tests; CUDA setup overhead isn't worth it at this scale.</td>
             </tr>
             <tr>
               <td>Discrete GPU</td>
