@@ -377,54 +377,54 @@
             <tr>
               <th>Hardware</th>
               <th>Scene size</th>
-              <th>CPU headroom</th>
               <th>Recommendation</th>
+              <th>Why</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Discrete GPU</td>
-              <td>any</td>
-              <td>spare</td>
-              <td><span class="reco reco-sorted">Sorted + CPU pdqsort</span></td>
+            <tr class="row-group">
+              <td>Discrete GPU<br/><span class="row-sub">+ CUDA Toolkit</span></td>
+              <td><strong>Large</strong><br/><span class="row-sub">≥ 3M splats</span></td>
+              <td><span class="reco reco-cuda">Sorted + CUDA radix</span></td>
+              <td class="row-why">CPU sort becomes the bottleneck past a few million splats; the GPU radix sort eliminates it entirely.</td>
             </tr>
             <tr>
               <td>Discrete GPU</td>
-              <td>any</td>
-              <td>constrained</td>
-              <td><span class="reco reco-wboit">WBOIT</span></td>
-            </tr>
-            <tr>
-              <td>Integrated GPU</td>
-              <td>small / medium</td>
-              <td>spare</td>
+              <td>Small / medium<br/><span class="row-sub">≤ 3M splats</span></td>
               <td><span class="reco reco-sorted">Sorted + CPU pdqsort</span></td>
+              <td class="row-why">Default works fine; CUDA setup overhead isn't worth it at this size.</td>
             </tr>
             <tr>
-              <td>Integrated GPU</td>
-              <td>small / medium</td>
-              <td>constrained</td>
+              <td>Discrete GPU</td>
+              <td>any (CPU contended)</td>
               <td><span class="reco reco-wboit">WBOIT</span></td>
+              <td class="row-why">When other robot modules are competing for cores, skip the sort entirely.</td>
+            </tr>
+            <tr class="row-divide">
+              <td>Integrated GPU</td>
+              <td>Small / medium</td>
+              <td><span class="reco reco-sorted">Sorted + CPU pdqsort</span></td>
+              <td class="row-why">CPU sort holds up at this scale; visual fidelity stays exact.</td>
             </tr>
             <tr>
               <td>Integrated GPU</td>
-              <td>large</td>
-              <td>any</td>
-              <td><span class="reco reco-mixed">WBOIT if CPU matters, else Sorted + CPU</span></td>
+              <td>Large or CPU-contended</td>
+              <td><span class="reco reco-wboit">WBOIT</span></td>
+              <td class="row-why">CPU sort becomes the bottleneck on integrated systems; WBOIT trades a small fidelity hit for steady framerate.</td>
             </tr>
-            <tr>
-              <td>No GPU (CPU only)</td>
-              <td>small</td>
-              <td>any</td>
+            <tr class="row-divide">
+              <td>CPU only</td>
+              <td>Small</td>
               <td><span class="reco reco-sorted">Sorted + CPU pdqsort</span></td>
+              <td class="row-why">Medium and large scenes are unusable without a GPU; keep splats under ~500k.</td>
             </tr>
           </tbody>
         </table>
         <figcaption>
           <strong>Visual quality caveat.</strong> WBOIT is an approximation — a depth-weighted
           average instead of true back-to-front blending. With dense, high-opacity stacks the colors
-          drift from the Sorted result. For demos where photorealism trumps CPU cost, prefer
-          Sorted regardless of which row you fall in.
+          drift from the Sorted result. For demos where photorealism trumps CPU cost, prefer Sorted
+          regardless of which row you fall in.
         </figcaption>
       </figure>
     </div>

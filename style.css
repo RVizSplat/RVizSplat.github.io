@@ -452,6 +452,40 @@ pre code { background: transparent; padding: 0; color: inherit; }
 .reco-sorted { background: var(--green-soft);  color: var(--green); }
 .reco-wboit  { background: var(--indigo-soft); color: var(--indigo); }
 .reco-mixed  { background: var(--amber-soft);  color: var(--amber); }
+.reco-cuda   {
+  background: linear-gradient(135deg, var(--green-soft), #d1fae5);
+  color: var(--green);
+  border: 1px solid var(--green);
+  font-weight: 700;
+}
+
+/* Sub-line label inside table cells (e.g. "+ CUDA Toolkit", "≥ 3M splats") */
+.row-sub {
+  display: inline-block;
+  font-size: 12px;
+  color: var(--ink-mute);
+  font-weight: 500;
+}
+
+/* "Why" column reads softer than the main columns */
+.data-table .row-why {
+  font-size: 13.5px;
+  color: var(--ink-mute);
+  line-height: 1.5;
+}
+
+/* Highlight the headline CUDA row */
+.data-table tbody tr.row-group td {
+  background: linear-gradient(180deg, rgba(14,163,114,.06), rgba(14,163,114,.02));
+}
+.data-table tbody tr.row-group:hover td {
+  background: linear-gradient(180deg, rgba(14,163,114,.10), rgba(14,163,114,.04));
+}
+
+/* Soft horizontal break to group rows by hardware tier */
+.data-table tbody tr.row-divide td {
+  border-top: 1px solid var(--line-strong);
+}
 
 .data-figure figcaption {
   padding: 14px 18px 16px;
