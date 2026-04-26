@@ -85,8 +85,7 @@
   <!-- ===================== DEMO VIDEO ===================== -->
   <section id="video" class="block">
     <div class="col-wide">
-      <div class="kicker">Demo</div>
-      <h2 class="h2">RVizSplat in real time</h2>
+      <h2 class="h2">Demo</h2>
       <figure class="video-figure">
         <video
           autoplay muted loop playsinline preload="metadata"
@@ -104,21 +103,19 @@
   <!-- ===================== WHY ===================== -->
   <section id="why" class="block">
     <div class="col">
-      <div class="kicker">Why this exists</div>
-      <h2 class="h2 h2-left">Roboticists live in RViz. 3DGS doesn't.</h2>
+      <h2 class="h2 h2-left">Why we built it</h2>
       <p>
-        3D Gaussian Splatting has rapidly become the dominant photorealistic scene representation —
-        used in dense visual SLAM (Gaussian-SLAM, MonoGS, SplaTAM), sim-to-real environment capture,
-        teleoperation backdrops and digital twins. Yet every existing GS viewer
-        (the Inria reference, splatviz, antimatter15's WebGL splat) is a standalone application,
-        disconnected from a robot's TF tree, sensor data and markers.
+        3D Gaussian Splatting has become the leading photorealistic scene representation —
+        used in dense visual SLAM (Gaussian-SLAM, MonoGS, SplaTAM), in sim-to-real environment
+        capture, and as a backdrop for teleoperation. But every GS viewer out there (the Inria
+        reference, splatviz, antimatter15's WebGL splat) is a standalone tool, disconnected from
+        a robot's TF tree, sensor data and markers.
       </p>
       <p>
-        <strong>RVizSplat</strong> closes that gap. Trained splats reach RViz&nbsp;2 either as a
-        <code>.ply</code> or as a <code>splat_msgs/SplatArray</code> on a ROS topic. The plugin
-        renders them with custom Ogre-side shaders at interactive framerates, peers with native
-        markers, and exposes every knob as a real RViz Property — so a SLAM, navigation or
-        teleoperation engineer never has to leave their normal debug surface.
+        That's the gap <strong>RVizSplat</strong> fills. Trained splats reach RViz&nbsp;2 either as
+        a <code>.ply</code> or as a <code>splat_msgs/SplatArray</code> on a ROS topic, then render
+        with custom Ogre-side shaders at interactive framerates alongside TFs, markers and the
+        rest of the scene. Every knob is exposed as a real RViz Property.
       </p>
     </div>
   </section>
@@ -126,8 +123,7 @@
   <!-- ===================== WHAT'S IN THE PLUGIN ===================== -->
   <section id="features" class="block block-alt">
     <div class="col-wide">
-      <div class="kicker">What's in the plugin</div>
-      <h2 class="h2">A first-class splat layer for RViz&nbsp;2</h2>
+      <h2 class="h2">What it does</h2>
 
       <div class="feature-grid">
         <div class="feature">
@@ -167,7 +163,6 @@
   <!-- ===================== ARCHITECTURE ===================== -->
   <section id="how" class="block">
     <div class="col-wide">
-      <div class="kicker">How it works</div>
       <h2 class="h2">Architecture</h2>
       <p class="lead">
         A typed message and two source loaders feed an Ogre <code>MovableObject</code> that owns a
@@ -261,8 +256,7 @@
   <!-- ===================== IMAGE QUALITY ===================== -->
   <section id="quality" class="block block-alt">
     <div class="col-wide">
-      <div class="kicker">Image quality</div>
-      <h2 class="h2">Sorted-mode renders match standalone viewers</h2>
+      <h2 class="h2">Render quality</h2>
       <p class="lead">
         We compare RVizSplat against the two most-used standalone GS viewers using the canonical
         novel-view metrics — PSNR, SSIM, LPIPS — on identical viewport coordinates per scene.
@@ -301,8 +295,7 @@
         </table>
         <figcaption>
           RVizSplat sits between the two reference viewers on every metric — well within the
-          margin you'd expect from rasterisation differences. Quality isn't the differentiator;
-          ROS integration is.
+          margin you'd expect from rasterisation differences.
         </figcaption>
       </figure>
 
@@ -319,8 +312,7 @@
   <!-- ===================== COMPARISON TABLE ===================== -->
   <section id="vs" class="block">
     <div class="col-wide">
-      <div class="kicker">Where it fits</div>
-      <h2 class="h2">No other GS viewer is ROS-aware</h2>
+      <h2 class="h2">Compared to other viewers</h2>
 
       <figure class="data-figure">
         <table class="data-table">
@@ -364,11 +356,10 @@
   <!-- ===================== DECISION FRAMEWORK ===================== -->
   <section id="picker" class="block block-alt">
     <div class="col-wide">
-      <div class="kicker">Pick the right mode</div>
-      <h2 class="h2">A decision framework, not a benchmark contest</h2>
+      <h2 class="h2">Recommendations for your system</h2>
       <p class="lead">
-        Sort backend and transparency mode aren't a one-size choice — the right answer depends on
-        your GPU, your scene size, and how much CPU your robot's other modules need.
+        Which sort backend and transparency mode to pick depends on your GPU, scene size, and how
+        much CPU you can spare for rendering.
       </p>
 
       <figure class="data-figure">
@@ -433,8 +424,7 @@
   <!-- ===================== TEAM ===================== -->
   <section id="team" class="block block-alt">
     <div class="col">
-      <div class="kicker">Team</div>
-      <h2 class="h2 h2-left">Contributors</h2>
+      <h2 class="h2 h2-left">Team</h2>
       <ul class="team-list">
         <li><strong>Videh Patel</strong></li>
         <li><strong>Suchetan Saravanan</strong></li>
@@ -447,8 +437,7 @@
   <!-- ===================== INSTALL ===================== -->
   <section id="install" class="block">
     <div class="col">
-      <div class="kicker">Install</div>
-      <h2 class="h2 h2-left">Get it running</h2>
+      <h2 class="h2 h2-left">Install</h2>
       <pre class="code-block"><code>git clone --recurse-submodules https://github.com/RVizSplat/RVizSplat
 cd RVizSplat
 colcon build --symlink-install
@@ -480,8 +469,8 @@ rviz2
   <!-- ===================== CITE ===================== -->
   <section id="cite" class="block block-alt">
     <div class="col">
-      <div class="kicker">Cite</div>
-      <h2 class="h2 h2-left">If RVizSplat helps your robot</h2>
+      <h2 class="h2 h2-left">Cite</h2>
+      <p>If RVizSplat helps your robot:</p>
       <div class="bibtex-wrap">
         <button class="copy-btn" data-copy="bib">Copy</button>
         <pre id="bib"><code>@inproceedings{rvizsplat2026,
