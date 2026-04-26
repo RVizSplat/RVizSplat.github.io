@@ -328,7 +328,7 @@
             <tr>
               <th></th>
               <th>Sort backend</th>
-              <th>Marker integration</th>
+              <th>Lives inside RViz&nbsp;2</th>
               <th>ROS integration</th>
             </tr>
           </thead>
@@ -348,14 +348,14 @@
             <tr class="us-row">
               <td><strong>RVizSplat</strong></td>
               <td><strong>CPU + CUDA</strong></td>
-              <td><strong>Yes&nbsp;(WBOIT)</strong></td>
+              <td><strong>Yes</strong></td>
               <td><strong>Yes&nbsp;(splat_msgs)</strong></td>
             </tr>
           </tbody>
         </table>
         <figcaption>
           Standalone GS viewers are useful for inspecting a trained scene; none of them can sit
-          inside a robot's debug pipeline.
+          inside a robot's debug pipeline alongside TFs, markers and the rest of the scene graph.
         </figcaption>
       </figure>
     </div>
@@ -489,12 +489,24 @@
       <pre class="code-block"><code>git clone --recurse-submodules https://github.com/RVizSplat/RVizSplat
 cd RVizSplat
 colcon build --symlink-install
-source install/setup.bash
+source install/setup.bash</code></pre>
 
-# stream a scene
-ros2 run splat_publisher ply_splat_publisher \
+      <h3 class="h3 h3-spaced">Option A — load a PLY file directly</h3>
+      <p>The fastest path. No publisher node needed.</p>
+      <pre class="code-block"><code>rviz2
+# Add → Gaussian Splats
+# Source:     PLY File
+# Splat File: /path/to/scene.ply</code></pre>
+
+      <h3 class="h3 h3-spaced">Option B — stream over a ROS topic</h3>
+      <p>For live splat updates from another node, or when the scene gets republished.</p>
+      <pre class="code-block"><code>ros2 run splat_publisher ply_splat_publisher \
   --ros-args -p ply_path:=/path/to/scene.ply
-rviz2  # Add → Gaussian Splats → topic = /gaussian_splats</code></pre>
+rviz2
+# Add → Gaussian Splats
+# Source: ROS Topic
+# Topic:  /gaussian_splats</code></pre>
+
       <p class="muted">
         Requires ROS&nbsp;2 Rolling. Optional CUDA Toolkit for the CUDA radix-sort path —
         the plugin falls back to CPU pdqsort if CUDA isn't present.
