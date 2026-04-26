@@ -430,43 +430,6 @@
     </div>
   </section>
 
-  <!-- ===================== WHAT WE TRIED & REMOVED ===================== -->
-  <section id="cuts" class="block">
-    <div class="col">
-      <div class="kicker">Honest section</div>
-      <h2 class="h2 h2-left">What we tried and removed</h2>
-
-      <div class="cut">
-        <h4>MBOIT and Hybrid OIT</h4>
-        <p>
-          About <strong>3× the rasterisation throughput of WBOIT</strong> in our measurements —
-          but on overlap-heavy 3DGS scenes the moment-based reconstruction blurred high-α regions.
-          Photorealism was the whole point; speed alone wasn't worth the fidelity loss. There may
-          still be a single-pass OIT technique that survives dense splat overlap; this is open.
-        </p>
-      </div>
-
-      <div class="cut">
-        <h4>Single-pass WBOIT via MRT fusion</h4>
-        <p>
-          Collapsing the accumulation and reveal passes into one MRT pass with log-space reveal
-          math could roughly halve the rasterisation cost. We couldn't get the math right in time.
-          The two-pass version ships; the single-pass variant is on the roadmap.
-        </p>
-      </div>
-
-      <div class="cut">
-        <h4>Zero-copy CUDA &harr; OpenGL interop</h4>
-        <p>
-          Mapping the index VBO directly as a CUDA buffer to skip the device&nbsp;→&nbsp;host&nbsp;→&nbsp;device
-          roundtrip after the radix sort <em>should</em> have been a clear win. End-to-end the
-          plain copy path was actually faster, likely because of <code>cudaStreamSynchronize</code>
-          cost. We kept the simpler version.
-        </p>
-      </div>
-    </div>
-  </section>
-
   <!-- ===================== TEAM ===================== -->
   <section id="team" class="block block-alt">
     <div class="col">
