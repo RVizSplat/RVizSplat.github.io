@@ -537,34 +537,6 @@ pre code { background: transparent; padding: 0; color: inherit; }
 }
 .team-list li strong { color: var(--ink); }
 
-/* ============================================================
-   CITE / BIBTEX
-   ============================================================ */
-.bibtex-wrap { position: relative; margin-top: 14px; }
-.bibtex-wrap pre {
-  background: #0f172a;
-  color: #f1f5f9;
-  border-color: #0f172a;
-  padding-right: 78px;
-  font-size: 13px;
-}
-.copy-btn {
-  position: absolute;
-  top: 10px; right: 10px;
-  padding: 5px 12px;
-  background: rgba(255,255,255,.08);
-  border: 1px solid rgba(255,255,255,.2);
-  color: #e2e8f0;
-  border-radius: 6px;
-  font-family: var(--sans);
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color .15s ease;
-}
-.copy-btn:hover  { background: rgba(255,255,255,.16); }
-.copy-btn.copied { background: var(--green); border-color: var(--green); color: #fff; }
-
 .code-block { margin: 16px 0 14px; }
 
 /* ============================================================

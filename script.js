@@ -1,26 +1,6 @@
 /* RVizSplat project page — minimal interactivity */
 
-// 1) Copy-to-clipboard for the BibTeX block
-document.querySelectorAll(".copy-btn").forEach((btn) => {
-  btn.addEventListener("click", async () => {
-    const target = document.getElementById(btn.dataset.copy);
-    if (!target) return;
-    try {
-      await navigator.clipboard.writeText(target.innerText.trim());
-      const original = btn.textContent;
-      btn.textContent = "Copied!";
-      btn.classList.add("copied");
-      setTimeout(() => {
-        btn.textContent = original;
-        btn.classList.remove("copied");
-      }, 1600);
-    } catch (e) {
-      console.warn("Clipboard write failed", e);
-    }
-  });
-});
-
-// 2) Hide the in-frame placeholder once a video has loaded data
+// 1) Hide the in-frame placeholder once a video has loaded data
 //    (so users see the real video as soon as they drop one in,
 //     and the helpful "drop video here" text otherwise)
 document.querySelectorAll(".video-frame video").forEach((video) => {
@@ -52,7 +32,7 @@ document.querySelectorAll(".video-frame video").forEach((video) => {
   }, 1500);
 });
 
-// 3) Smooth-scroll offset for sticky nav (anchors)
+// 2) Smooth-scroll offset for sticky nav (anchors)
 const navHeight = 60;
 document.querySelectorAll('a[href^="#"]').forEach((a) => {
   a.addEventListener("click", (e) => {
